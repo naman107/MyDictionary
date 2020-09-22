@@ -47,12 +47,11 @@ const Home = ({ navigation }) => {
             )
         }
     }
-
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])

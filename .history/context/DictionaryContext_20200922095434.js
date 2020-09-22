@@ -13,7 +13,7 @@ const DictionaryContextProvider = (props, { navigation }) => {
 
     const fetchWords = () => {
         AsyncStorage.getItem(key.toString())
-            .then(result => result === null ? setWords([]) : setWords(JSON.parse(result)))
+            .then(result => setWords(JSON.parse(result)))
             .catch(err => console.log(err))
         if (words === null) {
             setWords([])
@@ -21,9 +21,9 @@ const DictionaryContextProvider = (props, { navigation }) => {
     }
 
     const addWords = ({ wordObj }) => {
-        // if (words === null) {
-        //     setWords([])
-        // }
+        if (words === null) {
+            setWords([])
+        }
         AsyncStorage.setItem(key.toString(), JSON.stringify([...words, wordObj]))
             .then(() => console.log('Done'))
             .catch(err => console.log(err))
@@ -36,9 +36,9 @@ const DictionaryContextProvider = (props, { navigation }) => {
             newWordArray = wordsArray.filter((e) => {
                 return e.id !== id
             })
-            // if (words === null) {
-            //     setWords([])
-            // }
+            if (words === null) {
+                setWords([])
+            }
             AsyncStorage.setItem(key.toString(), JSON.stringify(newWordArray));
             setWords(newWordArray)
         }

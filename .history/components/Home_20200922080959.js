@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import React, { useState, useEffect, useContext } from 'react'
 import { Image, View, ActivityIndicator, StyleSheet, Text, TouchableOpacity, FlatList } from 'react-native'
 import { Card } from 'react-native-paper'
@@ -10,6 +11,7 @@ const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDeleteVisible, setIsVisible] = useState(false)
     const [numberOfTimesPressed, setNumberOfTimesPressed] = useState(0)
+    const key = "WORDS"
 
     const LeftContent = () => {
         return (
@@ -47,12 +49,11 @@ const Home = ({ navigation }) => {
             )
         }
     }
-
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])
@@ -64,7 +65,7 @@ const Home = ({ navigation }) => {
             </View>
         )
     } else {
-        if (words.length === 0) {
+        if (AsyncStorage.getItem(key.toString() === null)) {
             return (
                 <>
                     <View style={styles.emptyContainer}>

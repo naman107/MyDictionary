@@ -69,7 +69,9 @@ const DictionaryForm = ({ navigation }) => {
         return (
             <>
                 <View style={styles.container}>
-                    <TouchableOpacity style={styles.closeIcon} onPress={() => navigation.goBack()}>
+                    <TouchableOpacity style={styles.closeIcon} onPress={() => navigation.navigate('Home', {
+                        'inProcess': true
+                    })}>
                         <Image source={require("../assets/icons/close.png")} />
                     </TouchableOpacity>
                     <View style={styles.card}>

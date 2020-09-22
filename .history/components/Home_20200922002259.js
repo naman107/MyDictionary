@@ -47,12 +47,11 @@ const Home = ({ navigation }) => {
             )
         }
     }
-
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])
@@ -64,21 +63,7 @@ const Home = ({ navigation }) => {
             </View>
         )
     } else {
-        if (words.length === 0) {
-            return (
-                <>
-                    <View style={styles.emptyContainer}>
-                        <View >
-                            <Text style={styles.emptyText} >Your Dictionary is empty!</Text>
-                        </View>
-                        <TouchableOpacity onPress={() => navigation.navigate('DictionaryForm')} style={styles.fabEmptyContainer}>
-                            <Image source={require("../assets/icons/add.png")} />
-                        </TouchableOpacity>
-                    </View>
-                </>
-            )
-        }
-        else {
+        if (words.length !== 0) {
             return (
                 <View style={styles.container}>
                     <FlatList
@@ -120,6 +105,20 @@ const Home = ({ navigation }) => {
                     </TouchableOpacity>
 
                 </View>
+            )
+        }
+        else {
+            return (
+                <>
+                    <View style={styles.emptyContainer}>
+                        <View >
+                            <Text style={styles.emptyText} >Your Dictionary is empty!</Text>
+                        </View>
+                        <TouchableOpacity onPress={() => navigation.navigate('DictionaryForm')} style={styles.fabEmptyContainer}>
+                            <Image source={require("../assets/icons/add.png")} />
+                        </TouchableOpacity>
+                    </View>
+                </>
             )
         }
     }

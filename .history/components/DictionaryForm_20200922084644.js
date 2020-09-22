@@ -40,11 +40,37 @@ const DictionaryForm = ({ navigation }) => {
             "Done Successfully!",
             [
                 {
-                    text: "OK", onPress: () => navigation.navigate('Home')
+                    text: "OK", onPress: () => navigation.navigate('Home', {
+                        'showLoader': true
+                    })
                 }
             ],
             { cancelable: false }
         );
+    }
+
+    const showAlert = () => {
+        return (
+            <AwesomeAlert
+                show={showAlert}
+                showProgress={false}
+                title="AwesomeAlert"
+                message="I have a message for you!"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                cancelText="No, cancel"
+                confirmText="Yes, delete it"
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    this.hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    this.hideAlert();
+                }}
+            />
+        )
     }
 
     if (showCard) {

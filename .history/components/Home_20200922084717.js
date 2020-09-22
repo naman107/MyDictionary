@@ -10,7 +10,7 @@ const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDeleteVisible, setIsVisible] = useState(false)
     const [numberOfTimesPressed, setNumberOfTimesPressed] = useState(0)
-
+    const showLoader = navigation.getParams('showLoader')
     const LeftContent = () => {
         return (
             <View>
@@ -47,12 +47,11 @@ const Home = ({ navigation }) => {
             )
         }
     }
-
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])

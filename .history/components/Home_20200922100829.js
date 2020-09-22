@@ -10,6 +10,7 @@ const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDeleteVisible, setIsVisible] = useState(false)
     const [numberOfTimesPressed, setNumberOfTimesPressed] = useState(0)
+    const inProcess = navigation.getParams('inProcess', true)
 
     const LeftContent = () => {
         return (
@@ -54,6 +55,7 @@ const Home = ({ navigation }) => {
                 setIsLoading(false)
             }, 200)
             fetchWords()
+            setIsLoading(inProcess)
         })
     }, [])
 

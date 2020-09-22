@@ -54,6 +54,7 @@ const Home = ({ navigation }) => {
                 setIsLoading(false)
             }, 200)
             fetchWords()
+            setIsLoading(true)
         })
     }, [])
 

@@ -47,12 +47,11 @@ const Home = ({ navigation }) => {
             )
         }
     }
-
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])
@@ -64,7 +63,7 @@ const Home = ({ navigation }) => {
             </View>
         )
     } else {
-        if (words.length === 0) {
+        if (words.length == 0) {
             return (
                 <>
                     <View style={styles.emptyContainer}>

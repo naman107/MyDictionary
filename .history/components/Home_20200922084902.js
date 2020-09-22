@@ -10,6 +10,7 @@ const Home = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [isDeleteVisible, setIsVisible] = useState(false)
     const [numberOfTimesPressed, setNumberOfTimesPressed] = useState(0)
+    const showLoader = navigation.getParams('showLoader', false)
 
     const LeftContent = () => {
         return (
@@ -47,12 +48,19 @@ const Home = ({ navigation }) => {
             )
         }
     }
+    useEffect(() => {
+        if (showLoader) {
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 500)
+        }
+    }, [])
 
     useEffect(() => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
         })
     }, [])

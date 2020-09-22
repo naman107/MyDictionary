@@ -13,11 +13,11 @@ const DictionaryContextProvider = (props, { navigation }) => {
 
     const fetchWords = () => {
         AsyncStorage.getItem(key.toString())
-            .then(result => result === null ? setWords([]) : setWords(JSON.parse(result)))
+            .then(result => setWords(JSON.parse(result)))
             .catch(err => console.log(err))
-        if (words === null) {
-            setWords([])
-        }
+        // if (words === null) {
+        //     setWords([])
+        // }
     }
 
     const addWords = ({ wordObj }) => {

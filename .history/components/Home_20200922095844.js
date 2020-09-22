@@ -52,8 +52,9 @@ const Home = ({ navigation }) => {
         navigation.addListener('didFocus', () => {
             setTimeout(() => {
                 setIsLoading(false)
-            }, 200)
+            }, 500)
             fetchWords()
+            setIsLoading(true)
         })
     }, [])
 

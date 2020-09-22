@@ -13,6 +13,7 @@ const DictionaryForm = ({ navigation }) => {
 
     const showCard = navigation.getParam('showCard', false)
     const showItem = navigation.getParam('showItem', {})
+    const key = "WORDS"
 
     const { addWords, editWord } = useContext(DictionaryContext)
     let wordObj = {};
@@ -45,6 +46,30 @@ const DictionaryForm = ({ navigation }) => {
             ],
             { cancelable: false }
         );
+    }
+
+    const showAlert = () => {
+        return (
+            <AwesomeAlert
+                show={showAlert}
+                showProgress={false}
+                title="AwesomeAlert"
+                message="I have a message for you!"
+                closeOnTouchOutside={true}
+                closeOnHardwareBackPress={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                cancelText="No, cancel"
+                confirmText="Yes, delete it"
+                confirmButtonColor="#DD6B55"
+                onCancelPressed={() => {
+                    this.hideAlert();
+                }}
+                onConfirmPressed={() => {
+                    this.hideAlert();
+                }}
+            />
+        )
     }
 
     if (showCard) {

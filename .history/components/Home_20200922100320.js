@@ -50,10 +50,13 @@ const Home = ({ navigation }) => {
 
     useEffect(() => {
         navigation.addListener('didFocus', () => {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 200)
+            if (words !== []) {
+                setTimeout(() => {
+                    setIsLoading(false)
+                }, 200)
+            }
             fetchWords()
+            setIsLoading(true)
         })
     }, [])
 
